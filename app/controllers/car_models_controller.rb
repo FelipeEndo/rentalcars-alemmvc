@@ -1,5 +1,6 @@
 class CarModelsController < ApplicationController
   before_action :authorize_admin
+  attr_accessor :car_model
 
   def index
     @car_models = CarModel.all
@@ -7,6 +8,7 @@ class CarModelsController < ApplicationController
 
   def show
     @car_model = CarModel.find(params[:id])
+    @car_model = CarModelPresenter.new(@car_model)
   end
 
   def new

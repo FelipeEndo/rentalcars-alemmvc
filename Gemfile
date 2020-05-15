@@ -7,6 +7,7 @@ gem 'active_storage_validations'
 gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'draper'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
@@ -19,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
 end
 
 group :development do
