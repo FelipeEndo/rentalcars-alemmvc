@@ -13,10 +13,11 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.new(rental_params)
-    subsidiary = current_subsidiary
-    @rental.subsidiary = subsidiary
-    @rental.status = :scheduled
-    @rental.price_projection = @rental.calculate_price_projection
+    @rental.subsidiary = current_subsidiary
+
+
+    RentalScheduler.new(@rental).schedule
+
     if @rental.save
       redirect_to rental_path(@rental.id)
     else
@@ -54,7 +55,8 @@ class RentalsController < ApplicationController
   end
 
   def show
-    @rental = Rental.find(params[:id])
+    rental = Rental.find(params[:id])
+    @rental = RentalPresenter.new(rental)
   end
 
   def search

@@ -12,7 +12,7 @@ class Rental < ApplicationRecord
 
   def calculate_price_projection
     return 0 unless start_date && end_date && category
-    days = (end_date - start_date).to_i
+    days = (end_date - start_date).to_i #pode dar zero, altere para 1
     days * category.daily_rate
   end
 
